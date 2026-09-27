@@ -1,0 +1,33 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: booking-service
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/booking_db}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER:org.postgresql.Driver}
+    username: ${SPRING_DATASOURCE_USERNAME:booking_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:booking_pass}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: false
+
+jwt:
+  secret: "a5d1bcb0f6d9e7a7a6d7c13e3b63e9c5d19bf0d45ef6b9f102d67c93d6d4f2a"
+  expiration-ms: 86400000
+
+payment:
+  service-key: payment-service-secret
+  mock:
+    enabled: true
+    url: http://localhost:8083/payments
